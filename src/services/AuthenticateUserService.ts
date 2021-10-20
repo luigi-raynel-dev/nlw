@@ -65,17 +65,18 @@ class AuthenticateUserService{
             })
         }
 
-        const token = sign.(
+        const token = sign(
             {
                 user: {
                     name: user.name,
+                    avatar_url: user.avatar_url,
                     id: user.id
                 }
             },
-            process.env.JWT_SECRET  ,
+            process.env.JWT_SECRET,
             {
                 subject: user.id,
-                expireIn: "id"
+                expiresIn: '1d'
             }
         );
 
